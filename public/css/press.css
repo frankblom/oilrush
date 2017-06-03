@@ -1,0 +1,79 @@
+#app{
+	background: url('../img/bg_landscape.jpg');
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-size: 100%;
+	background-color: #bf6155;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1920px;
+	height: 1080px;
+}
+
+#score {
+	position: absolute;
+	overflow: hidden;
+	bottom: 0;
+	left: 160px;
+	width: 1600px;
+}
+
+.score-item {
+	float: left;
+	height: 80%;
+	width: 320px;
+	padding: 40px;
+}
+
+.country {
+	margin-top: 10px;
+}
+
+.country img {
+	max-width: 70px;
+	max-height: 120px;
+	border-radius: 2px;
+}
+
+.country-flag {
+	text-align: center;
+	height: 60px;
+}
+
+
+.country p {
+	text-align: center;
+	font-size: 25px;
+	line-height: 30px;
+}
+
+.score {
+	height: 900px;
+	overflow: auto;
+	position: relative;
+	width: 150px;
+	margin: 0 auto;
+
+}
+
+.score-bar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	float: left;
+	background: #000;
+	border-radius: 5px;
+	min-height: 25px;
+}
+
+.score span {
+	color: #fff;
+	text-align: center;
+	width: 100%;
+	display: block;
+	line-height: 20px;
+	font-size: 20px;
+	padding-top: 5px;
+}
