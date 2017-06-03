@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Country;
@@ -11,6 +12,13 @@ use App\Oil;
 
 class AdminController extends Controller
 {
+	public function __construct(){
+        $l = Cache::get('login');
+        if($l->type != "admin"){
+            return redirect("/sources/{$c->id}");
+        }
+    }
+
     public function score()
     {
     	$top = Country::leftJoin('oil', 'oil.country_id', '=', 'countries.id')

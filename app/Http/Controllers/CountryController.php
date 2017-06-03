@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Country;
@@ -10,26 +11,18 @@ use App\Oil;
 
 class CountryController extends Controller
 {
-    public function show($id){
-    	// $c = Country::join('oil', 'countries.id', '=', 'oil.country_id');
-    				// ->leftJoin('countries', "oil.country_id", '=','countries.id')
-    				// ->whereNull('oil.end')
-    				// ->groupBy(array('sources.id','countries.name'))
-    				// ->select(array('sources.id as source.id', 'countries.name'))
-    // 				->select(DB::raw("SUM(
-				// oil.lpm * TIMESTAMPDIFF(MINUTE,oil.start,
-				// (
-				// 	CASE 
-				// 	WHEN oil.end IS NULL
-				// 	THEN NOW()
-				// 	ELSE oil.end
-				// 	END
-				// ))) AS `amount`,
-				// sources.id as source,
-				// countries.name as country
-				// "))->groupBy(array('sources.id' ,'countries.name'))
-    				// ->get();
+    public function __construct(){
+        $l = Cache::get('login');
+        if($l->type != "admin" || $l->type != "country"){
+            return redirect("/sources/{$l->id}");
+        }
+    }
 
+    public function show($id){
+        $l = Cache::get('login');
+        if($l->id != $id && $l->type != "admin"){
+            return redirect("/countries/{$l->id}");
+        }
 
         $c = Country::find($id);
     	$s = Source::with('owner')->get();

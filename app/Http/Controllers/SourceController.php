@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Country;
@@ -10,7 +11,19 @@ use App\Oil;
 
 class SourceController extends Controller
 {
+    public function __construct(){
+        $l = Cache::get('login');
+        if($l->type != "admin" || $l->type != "source"){
+            return redirect("/countries/{$l->id}");
+        }
+    }
+
     public function show($id){
+        $l = Cache::get('login');
+        if($l->id != $id && $l->type != "admin"){
+            return redirect("/sources/{$l->id}");
+        }
+
     	$s = Source::find($id);
     	$countries = Country::all();
 
@@ -21,6 +34,11 @@ class SourceController extends Controller
     }
 
     public function update($id, Request $r){
+        $l = Cache::get('login');
+        if($l->id != $id && $l->type != "admin"){
+            return redirect("/sources/{$l->id}");
+        }
+
     	$newcountryID = $r->input('country');
     	$newcountry = Country::find($newcountryID);
     	$source = Source::find($id);
