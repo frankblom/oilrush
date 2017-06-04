@@ -16,7 +16,8 @@ class Auth
      */
     public function handle($request, Closure $next)
     {
-        if(!Cache::has('login')){
+        $login = session('login');
+        if($login == null){
            return redirect("/"); 
         }
 

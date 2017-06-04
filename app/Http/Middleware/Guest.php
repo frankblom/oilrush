@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Cache;
 
-class RedirectIfAuthenticated
+class Guest
 {
     /**
      * Handle an incoming request.
@@ -17,15 +17,15 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if(Cache::has('login')){
-            $d = Cache::get('login');
-            if($d->type == "country"){
-                return redirect("/countries/{$d->id}");
-            }else{
-                return redirect("/sources/{$d->id}");
-            }
+        $login = session('login');
+        if($login == null){
+            return $next($request);
         }
 
-        return $next($request);
+        if($login->type == "country"){
+            return redirect("/countries/{$login->id}");
+        }else{
+            return redirect("/sources/{$login->id}");
+        }
     }
 }

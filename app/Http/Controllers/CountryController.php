@@ -11,17 +11,14 @@ use App\Oil;
 
 class CountryController extends Controller
 {
-    public function __construct(){
-        $l = Cache::get('login');
-        if($l->type != "admin" || $l->type != "country"){
-            return redirect("/sources/{$l->id}");
-        }
-    }
-
     public function show($id){
-        $l = Cache::get('login');
-        if($l->id != $id && $l->type != "admin"){
-            return redirect("/countries/{$l->id}");
+        $l = session('login');
+        if($l['type'] != "admin" && $l['type'] != "country"){
+            return redirect("/sources/{$l['id']}");
+        }
+
+        if($l['id'] != $id && $l['type'] != "admin"){
+            return redirect("/countries/{$l['id']}");
         }
 
         $c = Country::find($id);

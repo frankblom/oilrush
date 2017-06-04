@@ -13,9 +13,10 @@ use App\Oil;
 class AdminController extends Controller
 {
 	public function __construct(){
-        $l = Cache::get('login');
-        if($l->type != "admin"){
-            return redirect("/sources/{$c->id}");
+        // $l = Cache::get('login');
+        $l = session('login');
+        if($l['type'] != "admin"){
+            return redirect("/sources/{$l['id']}");
         }
     }
 

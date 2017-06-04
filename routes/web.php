@@ -26,7 +26,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('score', 'AdminController@score');
 
 	Route::get('logout', function(){
-		Cache::forget('login');
+		session(['login'=>null]);
 		return redirect('/');
 	})->name('show-country');
 });

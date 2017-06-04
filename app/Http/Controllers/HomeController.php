@@ -26,7 +26,8 @@ class HomeController extends Controller
         if($code == "ADMINADMINADMIN"){
             $source = Source::first();
             $source->type = "admin";
-            Cache::forever('login', $source);
+            session(['login' => $source]);
+            // Cache::forever('login', $source);
             return redirect("/sources/{$source->id}");
         }
 
@@ -35,14 +36,14 @@ class HomeController extends Controller
         $country = Country::where('code',$code)->first();
         if($country != null){
             $country->type = "country";
-            Cache::forever('login', $country);
+            session(['login' => $country]);
             return redirect("/countries/{$country->id}");
         }
 
         $source = Source::where('code',$code)->first();
         if($source != null){
             $source->type = "source";
-            Cache::forever('login', $source);
+            session(['login' => $source]);
             return redirect("/sources/{$source->id}");
         }
 

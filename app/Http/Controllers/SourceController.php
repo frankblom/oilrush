@@ -11,17 +11,14 @@ use App\Oil;
 
 class SourceController extends Controller
 {
-    public function __construct(){
-        $l = Cache::get('login');
-        if($l->type != "admin" || $l->type != "source"){
-            return redirect("/countries/{$l->id}");
-        }
-    }
-
     public function show($id){
-        $l = Cache::get('login');
-        if($l->id != $id && $l->type != "admin"){
-            return redirect("/sources/{$l->id}");
+        $l = session('login');
+        if($l['type'] != "admin" && $l['type'] != "source"){
+            return redirect("/countries/{$l['id']}");
+        }
+
+        if($l['id'] != $id && $l['type'] != "admin"){
+            return redirect("/sources/{$l['id']}");
         }
 
     	$s = Source::find($id);
@@ -34,9 +31,13 @@ class SourceController extends Controller
     }
 
     public function update($id, Request $r){
-        $l = Cache::get('login');
-        if($l->id != $id && $l->type != "admin"){
-            return redirect("/sources/{$l->id}");
+        $l = session('login');
+        if($l['type'] != "admin" || $l['type'] != "source"){
+            return redirect("/countries/{$l['id']}");
+        }
+
+        if($l['id'] != $id && $l['type'] != "admin"){
+            return redirect("/sources/{$l['id']}");
         }
 
     	$newcountryID = $r->input('country');
