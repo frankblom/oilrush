@@ -32,7 +32,7 @@ class SourceController extends Controller
 
     public function update($id, Request $r){
         $l = session('login');
-        if($l['type'] != "admin" || $l['type'] != "source"){
+        if($l['type'] != "admin" && $l['type'] != "source"){
             return redirect("/countries/{$l['id']}");
         }
 
