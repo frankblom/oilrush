@@ -49,7 +49,9 @@ class SourceController extends Controller
     	}
 
     	$oil = Oil::where('source_id',$source->id)
-    				->where('country_id', $source->owner_id)->first();
+    				->where('country_id', $source->owner_id)
+                    ->whereNull('end')
+                    ->first();
 
     	// close the oil input
 		if($oil != null){
