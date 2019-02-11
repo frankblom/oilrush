@@ -1,0 +1,109 @@
+html,
+body {
+	background: #eee;
+}
+
+
+#adminPanel {
+	width: 80%;
+	float: left;
+	display: block;
+	overflow: hidden;
+}
+
+#buttonSection {
+	width: 100%;
+	float: left;
+	display: block;
+	overflow: hidden;
+	height: 200px;
+	padding: 15px;
+	border-bottom: 1px solid #ccc;
+}
+
+#scoreList {
+	width: 20%;
+	border-left: 1px solid #ccc;
+	height: 100%;
+	position: fixed;
+	right: 0;
+	top: 0;
+	padding-top: 10px;
+}
+
+.scoreItem {
+	float: left;
+	display: block;
+	padding: 2px 5px;
+	width: 100%; 
+ 	font-size: 18px;
+}
+
+.score-flag {
+	height: 15px;
+	float: left;
+	line-height: 18px;
+	padding-right: 10px;
+}
+
+.scoreItem b {
+	margin-right: 5px;
+	float: left;
+}
+
+.scoreItem span {
+	float: right;
+}
+
+#SourceSection {
+	width: 100%;
+	float: left;
+	display: block;
+	overflow: hidden;
+}
+
+#sources {
+	width: 100%;
+	float: left;
+}
+
+#SourceSection button {
+	display: block; 
+	float: left;
+	margin: 15px;
+}
+
+.sourceblock {
+	margin: 10px 0;
+	display: block;
+	float: left;
+	width: 150px;
+}
+
+.sourceblock input {
+	font-size: 22px;
+	height: 50px;
+	line-height: 50px;
+	border: 1px solid #eee;
+	border-radius: 3px;
+	width: 50px;
+	text-align: center;
+	margin-left: 50px;
+	margin-bottom: 5px;
+}
+
+.sourceblock p {
+	font-size: 18px;
+	text-align: center;
+}
+
+.source-owner span {
+	font-size: 15px;
+}
+
+.source-owner img {
+	height: 15px;
+	display: inline;
+	margin: 0 auto;
+	border-radius: 2px;
+}

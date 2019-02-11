@@ -9,6 +9,8 @@ class Source extends Model
     public $table = "sources";
     public $timestamps = false;
 
+    protected $fillable = ['lpm'];
+
     /**
      * Get the comments for the blog post.
      */

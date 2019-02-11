@@ -16,6 +16,9 @@ Route::group(['middleware' => ['guest']], function () {
 	Route::post('/', 'HomeController@login')->name('post-login');  
 });
 
+Route::get('AD', 'AdminController@admin')->name('admin');
+Route::post('AD', 'AdminController@action')->name('update-country');
+
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('sources/{id}', 'SourceController@show')->name('show-source');
