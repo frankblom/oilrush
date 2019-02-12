@@ -119,7 +119,7 @@ class AdminController extends Controller
 				countries.flag
 				"))
 				->groupBy(array('countries.id' ,'countries.name','countries.flag'))
-				->orderBy('countries.name')
+				->orderBy('amount','DESC')
 				->get();
 
     	return view('score',[
