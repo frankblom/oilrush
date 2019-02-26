@@ -21,7 +21,7 @@
 			@foreach($sources as $s)
 			<div class="sourceblock">
 				<input type="text" value="{{$s->lpm}}" name="{{$s->id}}">
-				<p><b>{{$s->number}}</b> {{$s->title}}</p>
+				<a href="./sources/{{$s->id}}"><p><b>{{$s->number}}</b> {{$s->title}}</p></a>
 				@if($s->owner == null)
 					<p class="source-owner"></p>
 				@else
